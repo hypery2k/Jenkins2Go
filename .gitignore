@@ -40,3 +40,6 @@ fastlane/screenshots
 fastlane/profiles
 fastlane/Appfile
 fastlane/Deliverfile
+
+# IDE
+.idea/
