@@ -42,3 +42,6 @@ fastlane/screenshots
 fastlane/profiles
 fastlane/Appfile
 fastlane/Deliverfile
+
+# Cocoapods
+Pods/
