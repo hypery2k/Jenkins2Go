@@ -13,7 +13,7 @@ timeout(60) {
       def buildUrl = env.BUILD_URL
       def appName = 'Jenkins2Go'
       def scheme = 'Jenkins2Go'
-      def buildSDK = 'iphoneos10.3' // see `xcodebuild -showsdks`
+      def buildSDK = 'iphoneos12.1' // see `xcodebuild -showsdks`
       def provisioningProfile = 'Distribution - Jenkins2Go'
 
       // PRINT ENVIRONMENT TO JOB
