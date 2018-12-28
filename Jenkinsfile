@@ -47,7 +47,7 @@ timeout(60) {
           }
 
       } catch (e) {
-          mail subject: "${jobName} (${buildNumber}): Error on build", to: 'dev@martinreinhardt-online.de', body: "Please go to ${buildUrl}."
+          mail subject: "${appName} (${buildNumber}): Error on build", to: 'dev@martinreinhardt-online.de', body: "Please go to ${buildUrl}."
           throw e
       }
   }
