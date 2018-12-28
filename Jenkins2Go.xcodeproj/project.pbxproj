@@ -1562,7 +1562,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PROJECT_DIR}/Fabric.framework/run\" ${FABRIC_API_KEY} ${FABRIC_SECRET_KEY}";
+			shellScript = "if [[ -z \"${FABRIC_SECRET_KEY}\" ]]; then\n    echo \"Skipping Fabric\"\nelse\n    \"${PROJECT_DIR}/Fabric.framework/run\" ${FABRIC_API_KEY} ${FABRIC_SECRET_KEY}\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

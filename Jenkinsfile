@@ -39,7 +39,7 @@ timeout(60) {
           stage('Package') {
               sh "mkdir -p target"
               sh "xcodebuild clean build -scheme \"${scheme}\" -sdk \"${buildSDK}\" -archivePath \"target/${scheme}.xcarchive\" -configuration Release PROVISIONING_PROFILE=\"${provisioningProfile}\" archive "
-              sh "xcodebuild -exportArchive -sdk \"${buildSDK}\" -archivePath target/${scheme}.xcarchive/  -exportPath \"./target/${scheme}_${buildNumber}.ipa\""
+              sh "xcodebuild -exportArchive -sdk \"${buildSDK}\" -archivePath target/${scheme}.xcarchive/  -exportPath \"./target/${scheme}_${buildNumber}.ipa\"  -exportOptionsPlist \"./Assets/Data/ExportOptions.plist\""
           }
 
           stage('Upload App') {
@@ -47,7 +47,7 @@ timeout(60) {
           }
 
       } catch (e) {
-          mail subject: "${env.JOB_NAME} (${env.BUILD_NUMBER}): Error on build", to: 'jenkins2go-app@martinreinhardt-online.de', body: "Please go to ${env.BUILD_URL}."
+          mail subject: "${jobName} (${buildNumber}): Error on build", to: 'dev@martinreinhardt-online.de', body: "Please go to ${buildUrl}."
           throw e
       }
   }
