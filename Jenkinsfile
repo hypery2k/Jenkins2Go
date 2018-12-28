@@ -39,11 +39,11 @@ timeout(60) {
           stage('Package') {
               sh "mkdir -p target"
               sh "xcodebuild clean build -scheme \"${scheme}\" -sdk \"${buildSDK}\" -archivePath \"target/${scheme}.xcarchive\" -configuration Release PROVISIONING_PROFILE=\"${provisioningProfile}\" archive "
-              sh "xcodebuild -exportArchive -sdk \"${buildSDK}\" -archivePath target/${scheme}.xcarchive/  -exportPath \"./target/${scheme}_${buildNumber}.ipa\"  -exportOptionsPlist \"./Assets/Data/ExportOptions.plist\""
+              sh "xcodebuild -exportArchive -sdk \"${buildSDK}\" -archivePath target/${scheme}.xcarchive/  -exportPath \"./target/appstore\"  -exportOptionsPlist \"./Assets/Data/ExportOptions.plist\""
           }
 
           stage('Upload App') {
-              sh "fastlane pilot upload --ipa target/${scheme}_${buildNumber}.ipa"
+              sh "fastlane pilot upload --ipa target/appstore/Jenkins2Go.ipa"
           }
 
       } catch (e) {
